@@ -5,64 +5,142 @@
 <title>Aafiya Collections</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
+
+/* GLOBAL */
 body{
-  font-family: Arial;
   margin:0;
-  background:#faf7f5;
+  font-family:'Poppins', sans-serif;
+  background:#fbfaf8;
+  color:#222;
 }
 
+/* HEADER */
 header{
-  background:#7a1f3d;
-  color:white;
-  padding:15px;
-  text-align:center;
-}
-
-.container{
   display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  padding:20px;
-}
-
-/* PRODUCT CARD */
-.product{
+  justify-content:space-between;
+  padding:20px 50px;
   background:white;
-  width:250px;
-  margin:15px;
-  padding:15px;
-  border-radius:10px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
-  text-align:center;
+  position:sticky;
+  top:0;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
-.product img{
-  width:100%;
-  border-radius:10px;
+.logo{
+  font-family:'Playfair Display';
+  font-size:24px;
+  color:#7a1f3d;
+  font-weight:700;
 }
 
-button{
+.cart-btn{
   background:#7a1f3d;
   color:white;
   border:none;
-  padding:10px;
-  margin-top:10px;
+  padding:10px 15px;
   cursor:pointer;
-  width:100%;
+  border-radius:6px;
 }
 
-/* CART */
+/* HERO */
+.hero{
+  height:80vh;
+  background:url('https://images.unsplash.com/photo-1520975682031-a6d3f0c0d5c6') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  position:relative;
+}
+
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+
+.hero h1{
+  font-family:'Playfair Display';
+  font-size:50px;
+}
+
+/* PRODUCTS */
+.section{
+  padding:60px;
+  text-align:center;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+  margin-top:40px;
+}
+
+.card{
+  background:white;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.06);
+  overflow:hidden;
+}
+
+.card img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+}
+
+.card h3{
+  font-family:'Playfair Display';
+}
+
+.price{
+  color:#7a1f3d;
+  font-weight:600;
+}
+
+.card button{
+  margin:10px;
+  padding:10px;
+  width:90%;
+  border:none;
+  background:#7a1f3d;
+  color:white;
+  cursor:pointer;
+  border-radius:6px;
+}
+
+/* CART OVERLAY */
+.overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  display:none;
+}
+
+/* CART PANEL */
 .cart{
   position:fixed;
-  right:0;
+  right:-400px;
   top:0;
-  width:300px;
+  width:350px;
   height:100%;
   background:white;
-  box-shadow:-5px 0 10px rgba(0,0,0,0.2);
-  padding:15px;
-  overflow-y:auto;
+  box-shadow:-5px 0 15px rgba(0,0,0,0.2);
+  padding:20px;
+  transition:0.4s;
 }
 
 .cart h2{
@@ -70,93 +148,129 @@ button{
 }
 
 .cart-item{
-  border-bottom:1px solid #ddd;
+  border-bottom:1px solid #eee;
   padding:10px 0;
 }
 
 .remove{
   background:red;
+  color:white;
+  border:none;
   padding:5px;
   font-size:12px;
-  margin-top:5px;
+  cursor:pointer;
+}
+
+.total{
+  font-weight:bold;
+  margin-top:10px;
 }
 
 .checkout{
   background:green;
-  margin-top:15px;
+  color:white;
+  border:none;
+  width:100%;
+  padding:12px;
+  margin-top:20px;
+  cursor:pointer;
+  border-radius:6px;
 }
+
+.close{
+  background:#222;
+  color:white;
+  border:none;
+  padding:5px 10px;
+  float:right;
+  cursor:pointer;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>Aafiya Collections</h1>
+  <div class="logo">Aafiya Collections</div>
+  <button class="cart-btn" onclick="openCart()">Checkout 🛒</button>
 </header>
 
-<!-- PRODUCTS -->
-<div class="container">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Timeless Elegance</h1>
+  </div>
+</section>
 
-<div class="product">
+<!-- PRODUCTS -->
+<section class="section">
+
+<div class="grid">
+
+<div class="card">
 <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
 <h3>Royal Saree</h3>
-<p>Rs. 4500</p>
-<button onclick="addToCart('Royal Saree',4500)">Add to Cart</button>
+<p class="price">Rs. 4500</p>
+<button onclick="add('Royal Saree',4500)">Add to Cart</button>
 </div>
 
-<div class="product">
+<div class="card">
 <img src="https://images.unsplash.com/photo-1623609163859-ca93c959b98a">
 <h3>Kurta Set</h3>
-<p>Rs. 2500</p>
-<button onclick="addToCart('Kurta Set',2500)">Add to Cart</button>
+<p class="price">Rs. 2500</p>
+<button onclick="add('Kurta Set',2500)">Add to Cart</button>
 </div>
 
-<div class="product">
+<div class="card">
 <img src="https://images.unsplash.com/photo-1618354691438-25bc04584c23">
 <h3>Party Dress</h3>
-<p>Rs. 3500</p>
-<button onclick="addToCart('Party Dress',3500)">Add to Cart</button>
+<p class="price">Rs. 3500</p>
+<button onclick="add('Party Dress',3500)">Add to Cart</button>
 </div>
 
 </div>
+
+</section>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
 
 <!-- CART -->
-<div class="cart">
-<h2>Cart 🛒</h2>
+<div class="cart" id="cart">
 
-<div id="cart-items"></div>
+<button class="close" onclick="closeCart()">X</button>
+<h2>Your Cart</h2>
 
-<h3>Total: Rs. <span id="total">0</span></h3>
+<div id="items"></div>
 
-<button class="checkout" onclick="checkout()">Checkout via WhatsApp</button>
+<p class="total">Total: Rs. <span id="total">0</span></p>
+
+<button class="checkout" onclick="checkout()">Place Order on WhatsApp</button>
+
 </div>
 
 <script>
 
 let cart = [];
 
-function addToCart(name, price){
-  cart.push({name, price});
-  renderCart();
+function add(name, price){
+  cart.push({name,price});
+  render();
 }
 
-function removeItem(index){
-  cart.splice(index,1);
-  renderCart();
-}
-
-function renderCart(){
-  let container = document.getElementById("cart-items");
+function render(){
+  let items = document.getElementById("items");
   let total = 0;
-  container.innerHTML = "";
+  items.innerHTML = "";
 
-  cart.forEach((item, index)=>{
+  cart.forEach((item,i)=>{
     total += item.price;
 
-    container.innerHTML += `
+    items.innerHTML += `
       <div class="cart-item">
-        <p>${item.name} - Rs. ${item.price}</p>
-        <button class="remove" onclick="removeItem(${index})">Remove</button>
+        <p>${item.name} - Rs.${item.price}</p>
+        <button class="remove" onclick="removeItem(${i})">Remove</button>
       </div>
     `;
   });
@@ -164,17 +278,34 @@ function renderCart(){
   document.getElementById("total").innerText = total;
 }
 
+function removeItem(i){
+  cart.splice(i,1);
+  render();
+}
+
+function openCart(){
+  document.getElementById("cart").style.right = "0";
+  document.getElementById("overlay").style.display = "block";
+}
+
+function closeCart(){
+  document.getElementById("cart").style.right = "-400px";
+  document.getElementById("overlay").style.display = "none";
+}
+
 function checkout(){
+
   let msg = "Hello, I want to order:%0A";
 
   cart.forEach(item=>{
     msg += "- " + item.name + " Rs." + item.price + "%0A";
   });
 
-  let total = cart.reduce((sum,i)=>sum+i.price,0);
+  let total = cart.reduce((a,b)=>a+b.price,0);
   msg += "%0ATotal: Rs." + total;
 
   window.open("https://wa.me/9779764824464?text=" + msg);
+
 }
 
 </script>
