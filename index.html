@@ -5,315 +5,179 @@
 <title>Aafiya Collections</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
 <style>
-
-/* GLOBAL */
 body{
+  font-family: Arial;
   margin:0;
-  font-family:'Poppins', sans-serif;
-  background:#fbfaf8;
-  color:#1f1f1f;
+  background:#faf7f5;
 }
 
-/* NAV */
 header{
-  display:flex;
-  justify-content:space-between;
-  padding:22px 60px;
-  background:rgba(255,255,255,0.95);
-  position:sticky;
-  top:0;
-  z-index:100;
-  backdrop-filter: blur(10px);
-  border-bottom:1px solid #eee;
-}
-
-.logo{
-  font-family:'Playfair Display';
-  font-size:24px;
-  font-weight:700;
-  color:#7a1f3d;
-  letter-spacing:1px;
-}
-
-nav a{
-  margin:0 15px;
-  text-decoration:none;
-  color:#333;
-  font-size:14px;
-  position:relative;
-}
-
-nav a::after{
-  content:'';
-  width:0%;
-  height:1px;
   background:#7a1f3d;
-  position:absolute;
-  left:0;
-  bottom:-4px;
-  transition:0.3s;
-}
-
-nav a:hover::after{
-  width:100%;
-}
-
-/* HERO */
-.hero{
-  height:92vh;
-  background:url('https://images.unsplash.com/photo-1520975682031-a6d3f0c0d5c6') center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  position:relative;
   color:white;
-}
-
-.hero::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  max-width:700px;
-}
-
-.hero h1{
-  font-family:'Playfair Display';
-  font-size:56px;
-  margin:0;
-  letter-spacing:1px;
-}
-
-.hero p{
-  font-size:15px;
-  margin-top:10px;
-  opacity:0.9;
-}
-
-.btn{
-  margin-top:25px;
-  padding:13px 30px;
-  background:#7a1f3d;
-  border:none;
-  color:white;
-  font-size:14px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.btn:hover{
-  background:#5e162d;
-  transform:translateY(-2px);
-}
-
-/* SECTION */
-.section{
-  padding:80px 60px;
+  padding:15px;
   text-align:center;
 }
 
-.section h2{
-  font-family:'Playfair Display';
-  font-size:36px;
-  margin-bottom:10px;
-}
-
-.subtitle{
-  color:#777;
-  font-size:14px;
-}
-
-/* CATEGORY */
-.categories{
+.container{
   display:flex;
-  justify-content:center;
   flex-wrap:wrap;
-  gap:14px;
-  margin-top:30px;
-}
-
-.cat{
-  padding:10px 18px;
-  border:1px solid #ddd;
-  border-radius:30px;
-  font-size:13px;
-  background:white;
-  transition:0.3s;
-}
-
-.cat:hover{
-  background:#7a1f3d;
-  color:white;
-  cursor:pointer;
-}
-
-/* PRODUCT GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-  gap:30px;
-  margin-top:50px;
+  justify-content:center;
+  padding:20px;
 }
 
 /* PRODUCT CARD */
-.card{
+.product{
   background:white;
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.06);
-  transition:0.4s;
-}
-
-.card:hover{
-  transform:translateY(-8px);
-}
-
-.card img{
-  width:100%;
-  height:360px;
-  object-fit:cover;
-}
-
-.card h3{
-  font-family:'Playfair Display';
-  margin:12px 0 5px;
-}
-
-.price{
-  color:#7a1f3d;
-  font-weight:600;
-}
-
-.card button{
+  width:250px;
   margin:15px;
-  padding:12px;
-  width:88%;
-  border:none;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  text-align:center;
+}
+
+.product img{
+  width:100%;
+  border-radius:10px;
+}
+
+button{
   background:#7a1f3d;
   color:white;
-  border-radius:8px;
+  border:none;
+  padding:10px;
+  margin-top:10px;
   cursor:pointer;
-  transition:0.3s;
+  width:100%;
 }
 
-.card button:hover{
-  background:#5e162d;
+/* CART */
+.cart{
+  position:fixed;
+  right:0;
+  top:0;
+  width:300px;
+  height:100%;
+  background:white;
+  box-shadow:-5px 0 10px rgba(0,0,0,0.2);
+  padding:15px;
+  overflow-y:auto;
 }
 
-/* ABOUT */
-.about{
-  max-width:780px;
-  margin:auto;
-  line-height:1.7;
-  color:#555;
-}
-
-/* FOOTER */
-footer{
-  background:#111;
-  color:white;
-  padding:40px;
+.cart h2{
   text-align:center;
-  font-size:13px;
-  margin-top:60px;
 }
 
+.cart-item{
+  border-bottom:1px solid #ddd;
+  padding:10px 0;
+}
+
+.remove{
+  background:red;
+  padding:5px;
+  font-size:12px;
+  margin-top:5px;
+}
+
+.checkout{
+  background:green;
+  margin-top:15px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">Aafiya Collections</div>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#shop">Shop</a>
-    <a href="#about">About</a>
-  </nav>
+<h1>Aafiya Collections</h1>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Timeless Elegance</h1>
-    <p>Luxury Women’s Fashion Crafted for Modern Confidence</p>
-    <button class="btn">Explore Collection</button>
-  </div>
-</section>
-
-<!-- CATEGORIES -->
-<section class="section">
-  <h2>Curated Collections</h2>
-  <p class="subtitle">Designed for every elegant moment</p>
-
-  <div class="categories">
-    <div class="cat">Sarees</div>
-    <div class="cat">Kurta Sets</div>
-    <div class="cat">Wedding Wear</div>
-    <div class="cat">Party Dresses</div>
-    <div class="cat">Casual Luxe</div>
-  </div>
-</section>
-
 <!-- PRODUCTS -->
-<section class="section" id="shop">
-  <h2>New Arrivals</h2>
-  <p class="subtitle">Premium pieces for modern women</p>
+<div class="container">
 
-  <div class="grid">
+<div class="product">
+<img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
+<h3>Royal Saree</h3>
+<p>Rs. 4500</p>
+<button onclick="addToCart('Royal Saree',4500)">Add to Cart</button>
+</div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
-      <h3>Royal Saree</h3>
-      <p class="price">Rs. 4500</p>
-      <a href="https://wa.me/9779764824464?text=I%20want%20to%20order%20Royal%20Saree">
-        <button>Order on WhatsApp</button>
-      </a>
-    </div>
+<div class="product">
+<img src="https://images.unsplash.com/photo-1623609163859-ca93c959b98a">
+<h3>Kurta Set</h3>
+<p>Rs. 2500</p>
+<button onclick="addToCart('Kurta Set',2500)">Add to Cart</button>
+</div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1623609163859-ca93c959b98a">
-      <h3>Elegant Kurta Set</h3>
-      <p class="price">Rs. 2500</p>
-      <a href="https://wa.me/9779764824464?text=I%20want%20to%20order%20Kurta%20Set">
-        <button>Order on WhatsApp</button>
-      </a>
-    </div>
+<div class="product">
+<img src="https://images.unsplash.com/photo-1618354691438-25bc04584c23">
+<h3>Party Dress</h3>
+<p>Rs. 3500</p>
+<button onclick="addToCart('Party Dress',3500)">Add to Cart</button>
+</div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1618354691438-25bc04584c23">
-      <h3>Evening Dress</h3>
-      <p class="price">Rs. 3500</p>
-      <a href="https://wa.me/9779764824464?text=I%20want%20to%20order%20Evening%20Dress">
-        <button>Order on WhatsApp</button>
-      </a>
-    </div>
+</div>
 
-  </div>
-</section>
+<!-- CART -->
+<div class="cart">
+<h2>Cart 🛒</h2>
 
-<!-- ABOUT -->
-<section class="section" id="about">
-  <h2>About Aafiya Collections</h2>
-  <p class="about">
-    Aafiya Collections is a premium women’s fashion brand from Nepal,
-    blending cultural heritage with modern elegance. Every piece is designed
-    to make women feel confident, graceful, and timeless.
-  </p>
-</section>
+<div id="cart-items"></div>
 
-<footer>
-  © 2026 Aafiya Collections | Luxury Women’s Fashion Brand
-</footer>
+<h3>Total: Rs. <span id="total">0</span></h3>
+
+<button class="checkout" onclick="checkout()">Checkout via WhatsApp</button>
+</div>
+
+<script>
+
+let cart = [];
+
+function addToCart(name, price){
+  cart.push({name, price});
+  renderCart();
+}
+
+function removeItem(index){
+  cart.splice(index,1);
+  renderCart();
+}
+
+function renderCart(){
+  let container = document.getElementById("cart-items");
+  let total = 0;
+  container.innerHTML = "";
+
+  cart.forEach((item, index)=>{
+    total += item.price;
+
+    container.innerHTML += `
+      <div class="cart-item">
+        <p>${item.name} - Rs. ${item.price}</p>
+        <button class="remove" onclick="removeItem(${index})">Remove</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("total").innerText = total;
+}
+
+function checkout(){
+  let msg = "Hello, I want to order:%0A";
+
+  cart.forEach(item=>{
+    msg += "- " + item.name + " Rs." + item.price + "%0A";
+  });
+
+  let total = cart.reduce((sum,i)=>sum+i.price,0);
+  msg += "%0ATotal: Rs." + total;
+
+  window.open("https://wa.me/9779764824464?text=" + msg);
+}
+
+</script>
 
 </body>
 </html>
