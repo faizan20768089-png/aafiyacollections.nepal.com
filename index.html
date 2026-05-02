@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   margin: 0;
   background: #f5f5dc;
   text-align: center;
@@ -20,22 +20,25 @@ header {
 h1 { margin: 0; }
 
 .hero {
-  padding: 40px;
+  padding: 50px 20px;
   background: #c9a227;
   color: white;
 }
 
 .products {
   padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
   background: white;
-  margin: 15px auto;
+  margin: 15px;
   padding: 15px;
-  width: 90%;
-  max-width: 300px;
-  border-radius: 10px;
+  width: 260px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .card img {
@@ -43,18 +46,30 @@ h1 { margin: 0; }
   border-radius: 10px;
 }
 
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #800020;
+  margin: 10px 0;
+}
+
 button {
   background: #800020;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 10px 15px;
   margin-top: 10px;
   cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #a00030;
 }
 
 footer {
   margin-top: 20px;
-  padding: 10px;
+  padding: 15px;
 }
 </style>
 </head>
@@ -67,34 +82,34 @@ footer {
 
 <div class="hero">
 <h2>Elegance Woven in Every Thread</h2>
-<p>Stylish clothing inspired by Nepalese fashion</p>
+<p>Premium clothing inspired by Nepalese fashion</p>
 </div>
 
 <div class="products">
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1520975922323-1b67caaebfcb">
-<h3>Kurta Set</h3>
-<p>Rs. 2500</p>
-<a href="https://wa.me/9779764824464?text=Hi%20I%20want%20to%20order%20Kurta%20Set">
+<h3>Aafiya Classic Kurta Set</h3>
+<p class="price">Rs. 2,500</p>
+<a href="https://wa.me/9779764824464?text=Hi%20I%20want%20to%20order%20Aafiya%20Classic%20Kurta%20Set">
 <button>Order on WhatsApp</button>
 </a>
 </div>
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0">
-<h3>Saree</h3>
-<p>Rs. 4500</p>
-<a href="https://wa.me/9779764824464?text=Hi%20I%20want%20to%20order%20Saree">
+<h3>Aafiya Premium Saree</h3>
+<p class="price">Rs. 4,500</p>
+<a href="https://wa.me/9779764824464?text=Hi%20I%20want%20to%20order%20Aafiya%20Premium%20Saree">
 <button>Order on WhatsApp</button>
 </a>
 </div>
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd53">
-<h3>Casual Wear</h3>
-<p>Rs. 1800</p>
-<a href="https://wa.me/9779764824464?text=Hi%20I%20want%20to%20order%20Casual%20Wear">
+<h3>Aafiya Casual Wear</h3>
+<p class="price">Rs. 1,800</p>
+<a href="https://wa.me/9779764824464?text=Hi%20I%20want%20to%20order%20Aafiya%20Casual%20Wear">
 <button>Order on WhatsApp</button>
 </a>
 </div>
@@ -102,7 +117,7 @@ footer {
 </div>
 
 <footer>
-<p>© Aafiya Collections</p>
+<p>© 2026 Aafiya Collections</p>
 </footer>
 
 </body>
